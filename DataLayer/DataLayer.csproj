@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\ITableItem.cs" />
+    <Compile Include="Interfaces\ITableItem.cs" />
     <Compile Include="Database\Database.cs" />
     <Compile Include="Database\TableData.cs" />
     <Compile Include="DbTables\DbHraci.cs" />

@@ -30,7 +30,7 @@ namespace DesktopApp
 
         private void Instance_Changed(object sender, EventArgs e)
         {
-            if (!Logged.Instance.LoggedState || Logged.Instance.PersonR == null)
+            if (!Logged.Instance.LoggedState || Logged.Instance.PersonR == false)
             {
 
                 tabulkyToolStripMenuItem.Enabled = false;
@@ -47,7 +47,7 @@ namespace DesktopApp
                 return;
             }
 
-            if (!Logged.Instance.LoggedState || Logged.Instance.PersonH == null)
+            if (!Logged.Instance.LoggedState || Logged.Instance.PersonH == false)
             {
 
                 tabulkyToolStripMenuItem.Enabled = false;
@@ -64,7 +64,7 @@ namespace DesktopApp
                 return;
             }
 
-            if (!Logged.Instance.LoggedState || Logged.Instance.PersonP == null)
+            if (!Logged.Instance.LoggedState || Logged.Instance.PersonP == false)
             {
 
                 tabulkyToolStripMenuItem.Enabled = false;

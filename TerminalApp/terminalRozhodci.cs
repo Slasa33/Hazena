@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using BusinessLayer.Table;
 using System.Threading;
 using DataLayer.Items;
+using DataLayer.Interfaces;
 
 namespace TerminalApp
 {
     class terminalRozhodci
     {
+
+        private readonly IRozhodci _rozhodci;
+
+
+        public terminalRozhodci(IRozhodci rozhodci)
+        {
+            _rozhodci = rozhodci;
+        }
+
         public void VypisRozhodcich()
         {
-            IEnumerable<Rozhodci> rozhodci = RozhodciSingleton.Instance.SelectArray();
+            IEnumerable<Rozhodci> rozhodci = _rozhodci.SelectArray();
             foreach (var item in rozhodci)
             {
                 Console.WriteLine(item);
@@ -44,8 +53,8 @@ namespace TerminalApp
 
         public void VlozRozhodcicho()
         {
-            Rozhodci _rozhodci = Vloz();
-            RozhodciSingleton.Instance.Insert(_rozhodci);
+            Rozhodci roz = Vloz();
+            _rozhodci.Insert(roz);
             Console.WriteLine("Rozhodci vlozen!");
             Thread.Sleep(2000);
         }

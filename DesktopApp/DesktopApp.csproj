@@ -100,9 +100,6 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs" />
-    <Compile Include="Model2.cs" />
-    <Compile Include="Model3.cs" />
     <Compile Include="Persist\Logged.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

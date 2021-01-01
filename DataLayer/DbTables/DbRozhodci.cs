@@ -70,5 +70,11 @@ namespace DataLayer.DbTables
             }
             return rozhodci;
         }
+
+        public int Insert(ITableItem item)
+        {
+            return TableData.NonQuerry(SqlInsert, item.GetArgs());
+        }
+
     }
 }

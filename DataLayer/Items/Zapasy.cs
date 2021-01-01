@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DataLayer.Abstract;
+using DataLayer.Interfaces;
 
 namespace DataLayer.Items
 {

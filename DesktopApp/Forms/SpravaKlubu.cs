@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using BusinessLayer.Modely;
 using DataLayer.DbTables;
 using DataLayer.Interfaces;
 using DataLayer.Items;
@@ -65,7 +66,7 @@ namespace DesktopApp.Forms
             klubView.Columns.Clear();
 
             IEnumerable<Kluby> klubby = _kluby.VyberVsechnyKluby();
-            klubView.DataSource = klubby.Select(o => new Model()
+            klubView.DataSource = klubby.Select(o => new ModelKluby()
             { kID = o.kID, nazev_klubu = o.nazev_klubu, prezident_klubu_prezID = o.prezident_klubu_prezID } ).ToList();
 
             var btnCell = new DataGridViewButtonColumn

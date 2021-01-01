@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using BusinessLayer.DomainController;
 using DataLayer.Interfaces;
 using DataLayer.Items;
 
@@ -10,6 +11,7 @@ namespace DesktopApp.Forms
 
         private readonly Hraci hraci;
         private readonly IHraci _ihraci;
+        private readonly HraciDomain _hraciDomain;
 
         public VlozitHrace(Hraci hrac, IHraci ihraci)
         {
@@ -23,6 +25,7 @@ namespace DesktopApp.Forms
             tbprijmeni.Text = hrac.prijmeni;
             tbrodnecislo.Text = hrac.rodne_cislo;
             tbheslo.Text = hrac.heslo;
+            _hraciDomain = new HraciDomain();
         }
 
         private Hraci LoadHrac(Hraci hrac)
@@ -48,16 +51,8 @@ namespace DesktopApp.Forms
             hraci.rodne_cislo = tbrodnecislo.Text;
             hraci.heslo = tbheslo.Text;
 
+            _hraciDomain.InsertHrac(_ihraci, hraci);
 
-            if(hraci.hID == 0)
-            {
-                _ihraci.Insert(hraci);
-            }
-            else
-            {
-                _ihraci.Update(hraci);
- 
-            }
             DialogResult = DialogResult.OK;
         }
         private void button3_Click(object sender, EventArgs e)
@@ -65,10 +60,8 @@ namespace DesktopApp.Forms
 
             hraci.hID = int.Parse(tbid.Text);
 
-            if (hraci.hID != 0)
-            {
-                _ihraci.Delete(hraci);
-            }
+            _hraciDomain.DeleteHrac(_ihraci, hraci);
+            
             DialogResult = DialogResult.OK;
         }
 

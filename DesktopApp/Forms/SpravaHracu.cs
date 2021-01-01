@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
+using BusinessLayer.DomainController;
 using DataLayer.Interfaces;
 using DataLayer.Items;
 
@@ -13,10 +11,12 @@ namespace DesktopApp.Forms
         int _id;
 
         private readonly IHraci _hraci;
+        private readonly HraciDomain _hraciDomain;
         public SpravaHracu(int id, IHraci hraci)
         {
             _id = id;
             _hraci = hraci;
+            _hraciDomain = new HraciDomain();
             InitializeComponent();
 
             dataGridView1.CellClick += DataGridView1_CellClick;
@@ -35,29 +35,24 @@ namespace DesktopApp.Forms
         {
 
             DataGridView table = (DataGridView)sender;
-            if(e.RowIndex == -1)
+            if (e.RowIndex == -1)
             {
                 return;
             }
 
             Hraci a = _hraci.SelectId((int)table.Rows[e.RowIndex].Cells["hID"].Value);
-            using(VlozitHrace detail = new VlozitHrace(a, _hraci))
+            using (VlozitHrace detail = new VlozitHrace(a, _hraci))
             {
                 if (detail.ShowDialog() == DialogResult.OK)
                 {
                     RefreshList();
                 }
             }
-
-
         }
 
         private void RefreshList()
         {
-            List<Hraci> hraci = new List<Hraci>();
-            hraci = _hraci.SelectHraci(_id).ToList();
-            dataGridView1.DataSource = hraci.Select(o => new Model2()
-            { hID = o.hID, jmeno = o.jmeno, prijmeni = o.prijmeni }).ToList();
+            dataGridView1.DataSource = _hraciDomain.SelectHraciID(_hraci, _id);
         }
     }
 }

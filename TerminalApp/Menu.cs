@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataLayer.Persist;
-using BusinessLayer.Table;
 using DataLayer;
+using DataLayer.DbTables;
+using DataLayer.Interfaces;
 
 namespace TerminalApp
 {
     class Menu
     {
+
+        private readonly IRozhodci _rozhodci;
+        private readonly IPrezident _prezident;
+
+
+        public Menu()
+        {
+            _rozhodci = new DbRozhodci();
+            _prezident = new DbPrezident();
+        }
+
 
         public void VytvorMenu()
         {
@@ -21,8 +32,8 @@ namespace TerminalApp
 
         public void Vyber()
         {
-            terminalRozhodci rozhodci = new terminalRozhodci();
-            terminalPrezident prezident = new terminalPrezident();
+            terminalRozhodci rozhodci = new terminalRozhodci(_rozhodci);
+            terminalPrezident prezident = new terminalPrezident(_prezident);
 
             Console.Clear();
             Console.Write("1 - pro vypis rozhodcich\n2 - pro vypis prezidentu\n3 - pro pridani rozhodciho\n");

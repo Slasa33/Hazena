@@ -41,6 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainController\HraciDomain.cs" />
+    <Compile Include="DomainController\PrezidentDomain.cs" />
+    <Compile Include="DomainController\RozhodciDomain.cs" />
+    <Compile Include="Modely\ModelKluby.cs" />
+    <Compile Include="Modely\ModelHraci.cs" />
+    <Compile Include="Modely\ModelZapasy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

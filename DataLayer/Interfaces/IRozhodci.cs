@@ -7,5 +7,7 @@ namespace DataLayer.Interfaces
     {
         IEnumerable<Rozhodci> SelectArray();
         Rozhodci SelectHeslo(string rodne_cislo, string heslo);
+        int Insert(ITableItem item);
+
     }
 }

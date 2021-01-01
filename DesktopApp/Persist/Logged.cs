@@ -23,11 +23,11 @@ namespace DesktopApp.Persist
             }
         }
 
-        public Rozhodci PersonR { get; set; }
+        public bool PersonR { get; set; }
 
-        public Hraci PersonH { get; set; }
+        public bool PersonH { get; set; }
 
-        public PrezidentKlubu PersonP { get; set; }
+        public bool PersonP { get; set; }
 
         private static Logged _instance;
 

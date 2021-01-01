@@ -38,7 +38,7 @@
             this.klubView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.klubView.Location = new System.Drawing.Point(20, 29);
             this.klubView.Name = "klubView";
-            this.klubView.Size = new System.Drawing.Size(369, 175);
+            this.klubView.Size = new System.Drawing.Size(445, 175);
             this.klubView.TabIndex = 0;
             this.klubView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.klubView_CellContentClick);
             // 

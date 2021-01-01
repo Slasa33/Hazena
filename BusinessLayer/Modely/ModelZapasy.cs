@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesktopApp
+﻿namespace BusinessLayer.Modely
 {
-    public class Model3
+    public class ModelZapasy
     {
         public int zID { get; set; }
         public int domaciID { get; set; }

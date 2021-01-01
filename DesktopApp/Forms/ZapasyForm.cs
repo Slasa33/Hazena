@@ -2,6 +2,7 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using BusinessLayer.Modely;
 using DataLayer.DbTables;
 using DataLayer.Interfaces;
 using DataLayer.Items;
@@ -47,7 +48,7 @@ namespace DesktopApp.Forms
             dataGridView1.Columns.Clear();
 
             IEnumerable<Zapasy> zaapasy = _zapasy.VyberVsechnyZapasy();
-            dataGridView1.DataSource = zaapasy.Select(o => new Model3()
+            dataGridView1.DataSource = zaapasy.Select(o => new ModelZapasy()
             { zID = o.zID, domaciID = o.domaciID, hosteID = o.hosteID, rozhodci_rID = o.rozhodci_rID, domaci_skore = o.domaci_skore, hoste_skore = o.hoste_skore}).ToList();
 
             var btnCell = new DataGridViewButtonColumn
