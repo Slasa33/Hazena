@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using BusinessLayer.DomainController;
 using DataLayer.Interfaces;
 using DataLayer.Items;
 
@@ -9,12 +10,14 @@ namespace DesktopApp.Forms
 
         private readonly Kluby kluby;
         private readonly IKluby _ikluby;
+        private readonly KlubyDomain _klubyDomain;
 
         public VlozitKlub(Kluby klub, IKluby ikluby)
         {
             InitializeComponent();
 
             _ikluby = ikluby;
+            _klubyDomain = new KlubyDomain();
             kluby = LoadKlub(klub);
             tbnazev.Text = klub.nazev_klubu;
             tbprez.Text = klub.prezident_klubu_prezID.ToString();
@@ -36,14 +39,8 @@ namespace DesktopApp.Forms
             kluby.nazev_klubu = tbnazev.Text;
             kluby.prezident_klubu_prezID = int.Parse(tbprez.Text);
 
-            if (kluby.kID == 0)
-            {
-                _ikluby.Insert(kluby);
-            }
-            else
-            {
-                _ikluby.Update(kluby);
-            }
+            _klubyDomain.InsertKluby(_ikluby, kluby);
+
             DialogResult = DialogResult.OK;
         }
     }

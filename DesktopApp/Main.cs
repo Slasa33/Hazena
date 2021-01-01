@@ -18,13 +18,8 @@ namespace DesktopApp
 
         private void prihlasittoolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            using (var d = new Login())
-            {
-                if (d.ShowDialog() == DialogResult.OK)
-                {
-
-                }
-            }
+            Login form = new Login();
+            form.ShowDialog();
         }
 
 
