@@ -28,9 +28,9 @@ namespace DesktopApp
             _rozhodci = new DbRozhodci();
             _hraci = new DbHraci();
             _prezident = new DbPrezident();
-            _rozhodciDomain = new RozhodciDomain();
-            _hraciDomain = new HraciDomain();
-            _prezidentDomain = new PrezidentDomain();
+            _rozhodciDomain = new RozhodciDomain(_rozhodci);
+            _hraciDomain = new HraciDomain(_hraci);
+            _prezidentDomain = new PrezidentDomain(_prezident);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace DesktopApp
                 rodne_cislo = tb_login.Text;
                 heslo = tb_heslo.Text;
 
-                var z = _rozhodciDomain.GetLogin(rodne_cislo, heslo, _rozhodci);
+                var z = _rozhodciDomain.GetLogin(rodne_cislo, heslo);
                 if (z == false)
                 {
                     MessageBox.Show(@"Spatne!");
@@ -56,7 +56,7 @@ namespace DesktopApp
                 rodne_cislo = tb_login.Text;
                 heslo = tb_heslo.Text;
 
-                var z = _hraciDomain.GetLogin(rodne_cislo, heslo, _hraci);
+                var z = _hraciDomain.GetLogin(rodne_cislo, heslo);
                 if (z == false)
                 {
                     MessageBox.Show(@"Spatne!");
@@ -73,7 +73,7 @@ namespace DesktopApp
                 rodne_cislo = tb_login.Text;
                 heslo = tb_heslo.Text;
 
-                var z = _prezidentDomain.GetLogin(rodne_cislo, heslo, _prezident);
+                var z = _prezidentDomain.GetLogin(rodne_cislo, heslo);
                 if (z == false)
                 {
                     MessageBox.Show(@"Spatne!");

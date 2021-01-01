@@ -17,7 +17,7 @@ namespace DesktopApp.Forms
             InitializeComponent();
 
             _ikluby = ikluby;
-            _klubyDomain = new KlubyDomain();
+            _klubyDomain = new KlubyDomain(_ikluby);
             kluby = LoadKlub(klub);
             tbnazev.Text = klub.nazev_klubu;
             tbprez.Text = klub.prezident_klubu_prezID.ToString();
@@ -39,7 +39,7 @@ namespace DesktopApp.Forms
             kluby.nazev_klubu = tbnazev.Text;
             kluby.prezident_klubu_prezID = int.Parse(tbprez.Text);
 
-            _klubyDomain.InsertKluby(_ikluby, kluby);
+            _klubyDomain.InsertKluby(kluby);
 
             DialogResult = DialogResult.OK;
         }

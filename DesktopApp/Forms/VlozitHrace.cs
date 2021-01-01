@@ -25,7 +25,7 @@ namespace DesktopApp.Forms
             tbprijmeni.Text = hrac.prijmeni;
             tbrodnecislo.Text = hrac.rodne_cislo;
             tbheslo.Text = hrac.heslo;
-            _hraciDomain = new HraciDomain();
+            _hraciDomain = new HraciDomain(_ihraci);
         }
 
         private Hraci LoadHrac(Hraci hrac)
@@ -51,7 +51,7 @@ namespace DesktopApp.Forms
             hraci.rodne_cislo = tbrodnecislo.Text;
             hraci.heslo = tbheslo.Text;
 
-            _hraciDomain.InsertHrac(_ihraci, hraci);
+            _hraciDomain.InsertHrac(hraci);
 
             DialogResult = DialogResult.OK;
         }
@@ -60,7 +60,7 @@ namespace DesktopApp.Forms
 
             hraci.hID = int.Parse(tbid.Text);
 
-            _hraciDomain.DeleteHrac(_ihraci, hraci);
+            _hraciDomain.DeleteHrac(hraci);
             
             DialogResult = DialogResult.OK;
         }

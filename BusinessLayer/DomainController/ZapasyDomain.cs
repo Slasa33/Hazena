@@ -9,7 +9,14 @@ namespace BusinessLayer.DomainController
 {
     public class ZapasyDomain
     {
-        public IEnumerable<ModelZapasy> SelectVsechnyZapasy(IZapasy _zapasy)
+        private IZapasy _zapasy;
+
+        public ZapasyDomain(IZapasy zapasy)
+        {
+            _zapasy = zapasy;
+        }
+
+        public IEnumerable<ModelZapasy> SelectVsechnyZapasy()
         {
             IEnumerable<Zapasy> zapasy = _zapasy.VyberVsechnyZapasy();
             IEnumerable<ModelZapasy> temp;
@@ -23,12 +30,12 @@ namespace BusinessLayer.DomainController
             return temp;
         }
 
-        public DataTable SelectDomaci(IZapasy _zapasy, int id)
+        public DataTable SelectDomaci(int id)
         {
             return _zapasy.SelectPlayersDomaci(id);
         }
 
-        public DataTable SelectHoste(IZapasy _zapasy, int id)
+        public DataTable SelectHoste(int id)
         {
             return _zapasy.SelectPlayersHoste(id);
         }

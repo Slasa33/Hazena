@@ -7,9 +7,16 @@ namespace BusinessLayer.DomainController
 {
     public class TabulkyDomain
     {
-        public List<Tabulky> SelectVsechny(ITabulky _tabulky)
+        private ITabulky _itabulky;
+
+        public TabulkyDomain(ITabulky itabulky)
         {
-            return _tabulky.VyberVsechny().ToList();
+            _itabulky = itabulky;
+        }
+
+        public List<Tabulky> SelectVsechny()
+        {
+            return _itabulky.VyberVsechny().ToList();
         }
     }
 }

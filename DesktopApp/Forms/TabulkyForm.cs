@@ -14,14 +14,14 @@ namespace DesktopApp.Forms
         public TabulkyForm(ITabulky tabulky)
         {
             _tabulky = tabulky;
-            _tabulkyDomain = new TabulkyDomain();
+            _tabulkyDomain = new TabulkyDomain(_tabulky);
             InitializeComponent();
             RefreshList();
         }
         private void RefreshList()
         {
             dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = _tabulkyDomain.SelectVsechny(_tabulky);
+            dataGridView1.DataSource = _tabulkyDomain.SelectVsechny();
         }
     }
 }

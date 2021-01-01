@@ -16,7 +16,7 @@ namespace DesktopApp.Forms
         {
             _id = id;
             _hraci = hraci;
-            _hraciDomain = new HraciDomain();
+            _hraciDomain = new HraciDomain(_hraci);
             InitializeComponent();
 
             dataGridView1.CellClick += DataGridView1_CellClick;
@@ -52,7 +52,7 @@ namespace DesktopApp.Forms
 
         private void RefreshList()
         {
-            dataGridView1.DataSource = _hraciDomain.SelectHraciID(_hraci, _id);
+            dataGridView1.DataSource = _hraciDomain.SelectHraciID(_id);
         }
     }
 }

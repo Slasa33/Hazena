@@ -10,7 +10,14 @@ namespace BusinessLayer.DomainController
 {
     public class KlubyDomain
     {
-        public void InsertKluby(IKluby _ikluby, Kluby kluby)
+        private IKluby _ikluby;
+
+        public KlubyDomain(IKluby ikluby)
+        {
+            _ikluby = ikluby;
+        }
+
+        public void InsertKluby(Kluby kluby)
         {
             if (kluby.kID == 0)
             {

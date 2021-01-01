@@ -17,7 +17,7 @@ namespace DesktopApp.Forms
             InitializeComponent();
 
             _zapasy = zapasy;
-            _zapasyDomain = new ZapasyDomain();
+            _zapasyDomain = new ZapasyDomain(_zapasy);
 
             zap = _zapasy.SelectId(id);
 
@@ -31,11 +31,11 @@ namespace DesktopApp.Forms
 
           dataGridView1.Columns.Clear();
 
-          dataGridView1.DataSource = _zapasyDomain.SelectDomaci(_zapasy, id);
+          dataGridView1.DataSource = _zapasyDomain.SelectDomaci(id);
 
           dataGridView2.Columns.Clear();
 
-          dataGridView2.DataSource = _zapasyDomain.SelectHoste(_zapasy, id);
+          dataGridView2.DataSource = _zapasyDomain.SelectHoste(id);
         }
 
  

@@ -6,9 +6,16 @@ namespace BusinessLayer.DomainController
 {
     public class RozhodciDomain
     {
-        public bool GetLogin(string rodne_cislo, string heslo, IRozhodci _rozhodci)
+        private IRozhodci _irozhodci;
+
+        public RozhodciDomain(IRozhodci irozhodci)
         {
-            Rozhodci z = _rozhodci.SelectHeslo(rodne_cislo, heslo);
+            _irozhodci = irozhodci;
+        }
+
+        public bool GetLogin(string rodne_cislo, string heslo)
+        {
+            Rozhodci z = _irozhodci.SelectHeslo(rodne_cislo, heslo);
             if (z == null)
             {
                 return false;

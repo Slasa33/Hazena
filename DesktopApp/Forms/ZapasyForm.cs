@@ -21,7 +21,7 @@ namespace DesktopApp.Forms
             InitializeComponent();
 
             _zapasy = zapasy;
-            _zapasyDomain = new ZapasyDomain();
+            _zapasyDomain = new ZapasyDomain(_zapasy);
 
             dataGridView1.CellClick += DataGridView1_CellClick;
 
@@ -50,7 +50,7 @@ namespace DesktopApp.Forms
         {
             dataGridView1.Columns.Clear();
 
-            dataGridView1.DataSource = _zapasyDomain.SelectVsechnyZapasy(_zapasy);
+            dataGridView1.DataSource = _zapasyDomain.SelectVsechnyZapasy();
 
             var btnCell = new DataGridViewButtonColumn
             {

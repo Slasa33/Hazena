@@ -8,9 +8,15 @@ namespace BusinessLayer.DomainController
 {
     public class HraciDomain
     {
-        public bool GetLogin(string rodne_cislo, string heslo, IHraci _hraci)
+        private IHraci _ihraci;
+        public HraciDomain(IHraci ihraci)
         {
-            Hraci z = _hraci.SelectHeslo(rodne_cislo, heslo);
+            _ihraci = ihraci;
+        }
+
+        public bool GetLogin(string rodne_cislo, string heslo)
+        {
+            Hraci z = _ihraci.SelectHeslo(rodne_cislo, heslo);
             if (z == null)
             {
                 return false;
@@ -19,7 +25,7 @@ namespace BusinessLayer.DomainController
             return true;
         }
 
-        public void InsertHrac(IHraci _ihraci, Hraci hraci)
+        public void InsertHrac(Hraci hraci)
         {
             if (hraci.hID == 0)
             {
@@ -31,7 +37,7 @@ namespace BusinessLayer.DomainController
             }
         }
 
-        public void DeleteHrac(IHraci _ihraci, Hraci hraci)
+        public void DeleteHrac(Hraci hraci)
         {
             if (hraci.hID != 0)
             {
@@ -39,7 +45,7 @@ namespace BusinessLayer.DomainController
             }
         }
 
-        public List<ModelHraci> SelectHraciID(IHraci _ihraci, int id)
+        public List<ModelHraci> SelectHraciID(int id)
         {
             List<Hraci> hraci = new List<Hraci>();
             List<ModelHraci> temp = new List<ModelHraci>();
