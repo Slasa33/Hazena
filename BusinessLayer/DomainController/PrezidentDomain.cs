@@ -23,5 +23,10 @@ namespace BusinessLayer.DomainController
 
             return true;
         }
+
+        public IEnumerable<PrezidentKlubu> SelectAll()
+        {
+            return _iprezident.SelectArray();
+        }
     }
 }

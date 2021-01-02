@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using BusinessLayer.DomainController;
 using DataLayer.Items;
 using DataLayer.Interfaces;
 
@@ -10,16 +11,20 @@ namespace TerminalApp
     {
 
         private readonly IRozhodci _rozhodci;
+        private readonly RozhodciDomain _rozhodciDomain;
 
 
         public terminalRozhodci(IRozhodci rozhodci)
         {
             _rozhodci = rozhodci;
+            _rozhodciDomain = new RozhodciDomain(_rozhodci);
         }
 
         public void VypisRozhodcich()
         {
-            IEnumerable<Rozhodci> rozhodci = _rozhodci.SelectArray();
+
+            var rozhodci = _rozhodciDomain.SelectAll();
+
             foreach (var item in rozhodci)
             {
                 Console.WriteLine(item);
@@ -54,7 +59,7 @@ namespace TerminalApp
         public void VlozRozhodcicho()
         {
             Rozhodci roz = Vloz();
-            _rozhodci.Insert(roz);
+            _rozhodciDomain.InsertRozhodci(roz);
             Console.WriteLine("Rozhodci vlozen!");
             Thread.Sleep(2000);
         }

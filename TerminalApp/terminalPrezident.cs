@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BusinessLayer.DomainController;
 using DataLayer.Items;
 using DataLayer.Interfaces;
 
@@ -9,6 +10,7 @@ namespace TerminalApp
     {
 
         private readonly IPrezident _prezident;
+        private readonly PrezidentDomain _prezidentDomain;
 
         public terminalPrezident(IPrezident prezident)
         {
@@ -17,7 +19,7 @@ namespace TerminalApp
 
         public void VypisPrezidentu()
         {
-            IEnumerable<PrezidentKlubu> prez = _prezident.SelectArray();
+            var prez = _prezidentDomain.SelectAll();
             foreach (var item in prez)
             {
                 Console.WriteLine(item);

@@ -23,5 +23,15 @@ namespace BusinessLayer.DomainController
 
             return true;
         }
+
+        public IEnumerable<Rozhodci> SelectAll()
+        {
+            return _irozhodci.SelectArray();
+        }
+
+        public void InsertRozhodci(Rozhodci rozhodci)
+        {
+            _irozhodci.Insert(rozhodci);
+        }
     }
 }
