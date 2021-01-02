@@ -54,5 +54,10 @@ namespace BusinessLayer.DomainController
 
             return temp;
         }
+
+        public Hraci SelectPodleID(int id)
+        {
+            return _ihraci.SelectId(id);
+        }
     }
 }

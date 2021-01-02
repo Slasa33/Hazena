@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using BusinessLayer.DomainController;
 using BusinessLayer.Modely;
 using DataLayer.DbTables;
 using DataLayer.Interfaces;
@@ -14,11 +15,13 @@ namespace DesktopApp.Forms
     {
 
         private readonly IKluby _kluby;
+        private readonly KlubyDomain _klubyDomain;
 
         public SpravaKlubu(IKluby kluby)
         { 
 
             _kluby = kluby;
+            _klubyDomain = new KlubyDomain(_kluby);
             InitializeComponent();
             klubView.CellDoubleClick += DataGridView1_CellClick;
             klubView.CellClick += DataGridView1_CellClick2;
@@ -33,8 +36,9 @@ namespace DesktopApp.Forms
                 return;
             }
 
-            Kluby a = _kluby.SelectId((int)table.Rows[e.RowIndex].Cells["kID"].Value);
-            using(VlozitKlub detail = new VlozitKlub(a, _kluby))
+            int id = ((int)table.Rows[e.RowIndex].Cells["kID"].Value);
+            Kluby a = _klubyDomain.SelectPodleID(id);
+            using (VlozitKlub detail = new VlozitKlub(a, _kluby))
             {
                 if (detail.ShowDialog() == DialogResult.OK)
                 {
@@ -65,9 +69,7 @@ namespace DesktopApp.Forms
         {
             klubView.Columns.Clear();
 
-            IEnumerable<Kluby> klubby = _kluby.VyberVsechnyKluby();
-            klubView.DataSource = klubby.Select(o => new ModelKluby()
-            { kID = o.kID, nazev_klubu = o.nazev_klubu, prezident_klubu_prezID = o.prezident_klubu_prezID } ).ToList();
+            klubView.DataSource = _klubyDomain.SelectVsechnyZapasy();
 
             var btnCell = new DataGridViewButtonColumn
             {

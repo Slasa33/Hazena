@@ -12,16 +12,6 @@ namespace DataLayer.DbTables
         protected string SqlSelect
             => "SELECT zID, domaciID, hosteID, rozhodci_rID, domaci_skore, hoste_skore FROM zapasy";
 
-        protected string SqlInsert
-            => "";
-
-        protected string SqlUpdate
-            => "";
-
-        protected string SqlDelete
-            => "";
-
-
         private static string SqlSelectId
             => "SELECT zID, k1.nazev_klubu AS domaci, k2.nazev_klubu AS hoste, r.jmeno, r.prijmeni, domaci_skore, hoste_skore, datum_cas FROM zapasy " +
             "JOIN klub k1 ON k1.kID = zapasy.domaciID " +

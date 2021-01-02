@@ -8,8 +8,6 @@ namespace DataLayer.DbTables
 {
     public class DbHraci : IHraci
     {
-        protected string SqlSelect
-            => "";
 
         protected string SqlInsert
             => "INSERT INTO hrac (post_pID, klub_kID, jmeno, prijmeni, rodne_cislo, heslo)" +

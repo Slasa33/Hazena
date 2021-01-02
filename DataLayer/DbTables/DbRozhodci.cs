@@ -13,13 +13,6 @@ namespace DataLayer.DbTables
 
         protected string SqlInsert
             => "INSERT INTO rozhodci (jmeno, prijmeni, rodne_cislo, telefon, heslo) VALUES (@jmeno, @prijmeni, @rodne_cislo, @telefon, @heslo)";
-
-        protected string SqlUpdate
-            => "UPDATE rozhodci SET jmeno = @jmeno, prijmeni = @prijmeni, rodne_cislo = @rodne_cislo, telefon = @telefon WHERE rID = @rID";
-
-        protected string SqlDelete
-            => "DELETE FROM rozhodci WHERE rID = @rID";
-
         private static string SqlSelectLogin
             => "SELECT rID, jmeno, prijmeni, rodne_cislo, telefon, heslo FROM rozhodci where " + "rodne_cislo = @rodne_cislo AND heslo = @Heslo";
 

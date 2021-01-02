@@ -40,7 +40,10 @@ namespace DesktopApp.Forms
                 return;
             }
 
-            Hraci a = _hraci.SelectId((int)table.Rows[e.RowIndex].Cells["hID"].Value);
+            int id = ((int)table.Rows[e.RowIndex].Cells["hID"].Value);
+
+            Hraci a = _hraciDomain.SelectPodleID(id);
+
             using (VlozitHrace detail = new VlozitHrace(a, _hraci))
             {
                 if (detail.ShowDialog() == DialogResult.OK)

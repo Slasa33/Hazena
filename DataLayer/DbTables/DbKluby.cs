@@ -17,9 +17,6 @@ namespace DataLayer.DbTables
         protected string SqlUpdate
             => "UPDATE klub SET nazev_klubu = @nazev_klubu, prezident_klubu_prezID = @prezident_klubu_prezID WHERE kID = @kID";
 
-        protected string SqlDelete
-            => "";
-
         private static string SqlSelectId
             => "SELECT kID, nazev_klubu, prezident_klubu_prezID FROM klub WHERE kID = @kID";
 

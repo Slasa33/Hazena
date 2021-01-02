@@ -11,16 +11,6 @@ namespace DataLayer.DbTables
         protected string SqlSelect
             => "SELECT prezID, jmeno, prijmeni, rodne_cislo FROM prezident_klubu";
 
-        protected string SqlInsert
-
-            => "";
-
-        protected string SqlUpdate
-            => "";
-
-        protected string SqlDelete
-            => "";
-
         private static string SqlSelectLogin
            => "SELECT prezID, jmeno, prijmeni, rodne_cislo, heslo FROM prezident_klubu where " + "rodne_cislo = @rodne_cislo AND heslo = @Heslo";
 
